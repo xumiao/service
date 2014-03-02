@@ -25,7 +25,8 @@ class Recommend(DefferedResource):
         conn  = pm.Connection("localhost")
         db    = conn[dbName]
         coll  = db[collectionName]
-        results = map(stringfy, coll.find().limit(num))
+        results = map(stringfy, coll.find({'Type':{'$exists':1}}).limit(num))
+        log.msg('recommend')
         
         simplejson.dump(
         {
@@ -35,16 +36,16 @@ class Recommend(DefferedResource):
         request.finish()
         
     def _delayedRender_POST(self, request):
-        queryObj = eval(request.content.getvalue())
-        hardConstraints = queryObj["hard"]
-        softConstraints = queryObj["soft"]
-        log.msg(hardConstraints)    
-        log.msg(softConstraints)
-        
+#        queryObj = eval(request.content.getvalue())
+#        hardConstraints = queryObj["hard"]
+#        softConstraints = queryObj["soft"]
+#        log.msg(hardConstraints)    
+#        log.msg(softConstraints)
         conn  = pm.Connection("localhost")
         db    = conn[dbName]
         coll  = db[collectionName]
-        results = map(stringfy, coll.find().limit(num))
+        results = map(stringfy, coll.find({'Type':{'$exists':1}}).limit(num))
+        log.msg('recommend')
         
         simplejson.dump(
         {
@@ -58,7 +59,8 @@ class Like(DefferedResource):
         conn  = pm.Connection("localhost")
         db    = conn[dbName]
         coll  = db[collectionName]
-        results = map(stringfy, coll.find().limit(num))
+        results = map(stringfy, coll.find({'Type':{'$exists':1}}).limit(num))
+        log.msg('like')
         
         simplejson.dump(
         {
@@ -68,19 +70,20 @@ class Like(DefferedResource):
         request.finish()
 
     def _delayedRender_POST(self, request):
-        queryObj = eval(request.content.getvalue())
-        originalQuery = queryObj["query"]
-        likedId = queryObj["id"]
-        hardConstraints = originalQuery["hard"]
-        softConstraints = originalQuery["soft"]
-
-        log.msg(hardConstraints)    
-        log.msg(softConstraints)
+        #queryObj = eval(request.content.getvalue())
+#        originalQuery = queryObj["query"]
+#        likedId = queryObj["id"]
+#        hardConstraints = originalQuery["hard"]
+#        softConstraints = originalQuery["soft"]
+#
+#        log.msg(hardConstraints)    
+#        log.msg(softConstraints)
         
         conn  = pm.Connection("localhost")
         db    = conn[dbName]
         coll  = db[collectionName]
-        results = map(stringfy, coll.find().limit(num))
+        results = map(stringfy, coll.find({'Type':{'$exists':1}}).limit(num))
+        log.msg('like')
         
         simplejson.dump(
         {
@@ -94,7 +97,8 @@ class Skip(DefferedResource):
         conn  = pm.Connection("localhost")
         db    = conn[dbName]
         coll  = db[collectionName]
-        results = map(stringfy, coll.find().limit(num))
+        results = map(stringfy, coll.find({'Type':{'$exists':1}}).limit(num))
+        log.msg('skip')
         
         simplejson.dump(
         {
@@ -104,18 +108,19 @@ class Skip(DefferedResource):
         request.finish()
         
     def _delayedRender_POST(self, request):
-        queryObj = eval(request.content.getvalue())
-        originalQuery = queryObj["query"]
-        skippedId = queryObj["id"]
-        hardConstraints = originalQuery["hard"]
-        softConstraints = originalQuery["soft"]
-        log.msg(hardConstraints)    
-        log.msg(softConstraints)
+#        queryObj = eval(request.content.getvalue())
+#        originalQuery = queryObj["query"]
+#        skippedId = queryObj["id"]
+#        hardConstraints = originalQuery["hard"]
+#        softConstraints = originalQuery["soft"]
+#        log.msg(hardConstraints)    
+#        log.msg(softConstraints)
         
         conn  = pm.Connection("localhost")
         db    = conn[dbName]
         coll  = db[collectionName]
-        results = map(stringfy, coll.find().limit(num))
+        results = map(stringfy, coll.find({'Type':{'$exists':1}}).limit(num))
+        log.msg('skip')
         
         simplejson.dump(
         {
